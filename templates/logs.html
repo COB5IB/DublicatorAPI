@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Port {{ port }} Logları</h2>
+  <pre style="background:#f4f4f4; padding:15px; border:1px solid #ccc; overflow-x:auto">
+  {% for line in logs %}
+    {{ line }}
+  {% endfor %}
+  </pre>
+  <a href="/">&#8592; Geri dön</a>
+{% endblock %}

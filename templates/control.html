@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Duplicator Kontrol Paneli</h2>
+  {% for port in ports %}
+    <form method="POST" action="/control" style="border:1px solid #ccc; padding:15px; margin-bottom:20px">
+      <h3>Port {{ port }}</h3>
+      <input type="hidden" name="port" value="{{ port }}">
+      <label>Target URL'ler (virgül ile ayrılı):</label><br>
+      <textarea name="targets" rows="2" cols="80">{{ statuses[port].targets }}</textarea><br><br>
+      {% if statuses[port].running %}
+        <button type="submit" name="action" value="stop">Durdur</button>
+        <span style="color:green">(Aktif)</span>
+      {% else %}
+        <button type="submit" name="action" value="start">Başlat</button>
+        <span style="color:red">(Kapalı)</span>
+      {% endif %}
+      <a href="/logs/{{ port }}" target="_blank">Logları Gör</a>
+    </form>
+  {% endfor %}
+{% endblock %}

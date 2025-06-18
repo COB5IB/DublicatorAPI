@@ -1,0 +1,6 @@
+<h2>Duplicator Durumu: {{ "ÇALIŞIYOR" if running else "DURDU" }}</h2>
+{% if running %}
+  <a href="/stop">⏹ Durdur</a>
+{% endif %}
+<a href="/">🔁 Yeni Konfigürasyon</a>
+<a href="/logs">📄 Logları Gör</a>
